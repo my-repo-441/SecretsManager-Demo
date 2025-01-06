@@ -24,7 +24,7 @@ provider:
         - Effect: Allow
           Action:
             - secretsmanager:GetSecretValue
-          Resource: arn:aws:secretsmanager:${self:provider.region}:${aws:accountId}:secret:OPENAI_API_KEY-kWDiZ3
+          Resource: arn:aws:secretsmanager:${self:provider.region}:${aws:accountId}:secret:YOUR-SECRET-KEY
 
 functions:
   invokeOpenAI:
