@@ -1,0 +1,23 @@
+service: secrets-manager-demo
+
+provider:
+  name: aws
+  runtime: python3.12
+  region: ap-northeast-1
+  environment:
+    SECRET_NAME: OPENAI_API_KEY  # Secrets Managerに登録したシークレット名
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - secretsmanager:GetSecretValue
+          Resource: arn:aws:secretsmanager:${self:provider.region}:${aws:accountId}:secret:YOUR-SECRET-KEY
+
+functions:
+  getSecret:
+    handler: handler.get_secret
+    events:
+      - httpApi:
+          path: /get-secret
+          method: get
