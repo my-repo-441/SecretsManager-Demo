@@ -1,8 +1,0 @@
-.DS_Store
-# Ignore all __pycache__ directories
-__pycache__/
-node_modules
-
-# Ignore all .pyc files
-*.pyc
-.serverless
